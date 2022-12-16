@@ -28,10 +28,14 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      dispatch({ type: SET_STORIES, payload: data });
+      dispatch({ type: SET_STORIES, payload: data.hits });
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const removeStory = (id) => {
+    dispatch({ type: REMOVE_STORY, payload: id });
   };
 
   useEffect(() => {
@@ -40,7 +44,9 @@ const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, removeStory }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 // make sure use

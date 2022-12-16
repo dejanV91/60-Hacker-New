@@ -12,6 +12,11 @@ const reducer = (state, action) => {
       return { ...state, isLoading: true };
     case SET_STORIES:
       return { ...state, isLoading: false, hits: action.payload };
+    case REMOVE_STORY:
+      return {
+        ...state,
+        hits: state.hits.filter((story) => story.objectID !== action.payload),
+      };
 
     default:
       return new Error("Not find action type");
