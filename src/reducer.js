@@ -10,6 +10,11 @@ const reducer = (state, action) => {
   switch (action.type) {
     case SET_LOADING:
       return { ...state, isLoading: true };
+    case SET_STORIES:
+      return { ...state, isLoading: false, hits: action.payload };
+
+    default:
+      return new Error("Not find action type");
   }
 };
 export default reducer;

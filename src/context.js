@@ -13,6 +13,10 @@ const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?";
 
 const initialState = {
   isLoading: true,
+  hits: [],
+  page: 0,
+  nbPages: 0,
+  query: "react",
 };
 
 const AppContext = React.createContext();
@@ -20,8 +24,19 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const fetchHits = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      dispatch({ type: SET_STORIES, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     dispatch({ type: SET_LOADING });
+    fetchHits(`${API_ENDPOINT}&query=${state.query}&page=${state.page}`);
   }, []);
 
   return (
