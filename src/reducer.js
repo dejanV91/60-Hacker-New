@@ -32,15 +32,17 @@ const reducer = (state, action) => {
 
       if (action.payload === "desc") {
         if (page < 1) {
-          page = nbPages;
+          page = nbPages - 1;
+        } else {
+          page = page - 1;
         }
-        page = page - 1;
       }
       if (action.payload === "incr") {
-        if (page > nbPages) {
+        if (page > nbPages - 2) {
           page = 0;
+        } else {
+          page = page + 1;
         }
-        page = page + 1;
       }
 
       return { ...state, page: page, nbPages: nbPages };
