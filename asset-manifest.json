@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/60-Hacker-New/static/css/main.c621402c.css",
+    "main.js": "/60-Hacker-New/static/js/main.f2ae8310.js",
+    "index.html": "/60-Hacker-New/index.html",
+    "main.c621402c.css.map": "/60-Hacker-New/static/css/main.c621402c.css.map",
+    "main.f2ae8310.js.map": "/60-Hacker-New/static/js/main.f2ae8310.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c621402c.css",
+    "static/js/main.f2ae8310.js"
+  ]
+}
