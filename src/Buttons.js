@@ -1,15 +1,15 @@
 import React from "react";
 import { useGlobalContext } from "./context";
 
-const Buttons = ({ page, nbPages }) => {
-  const { handlePage, isLoading } = useGlobalContext();
+const Buttons = () => {
+  const { page, nbPages, handlePage, isLoading } = useGlobalContext();
   return (
     <div className="btn-container">
       <button disabled={isLoading} onClick={() => handlePage("desc")}>
         prev
       </button>
       <p>
-        {page} of {nbPages}
+        {page + 1} of {nbPages}
       </p>
       <button disabled={isLoading} onClick={() => handlePage("incr")}>
         next
